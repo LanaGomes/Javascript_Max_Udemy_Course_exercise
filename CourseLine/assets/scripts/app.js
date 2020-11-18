@@ -1,18 +1,20 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
-currentResult = (currentResult + 10) * 3 / 2 - 1;
 
-function addNumbers(num1, num2){
-    const result = num1 + num2;
-    alert('The result is ' + result);
+function addNumbers(){
+    currentResult = currentResult + userInput.value;
+    outputResult (currentResult, '');
+ }
+
+addBtn.addEventListener('click', addNumbers);
+
+function theCall (mae, irmao, marido) {
+    let calling = `I love my ${mae}, my brother ${irmao} is my 
+    faithful squire and my husband ${marido} is the best`
+    return calling
 }
 
-addNumbers(10,2);
-addNumbers(5,5);
-
-let calculationDescription = `( ${defaultResult} + 10) * 3 / 2 - 1`;
-
-outputResult(currentResult,calculationDescription);
+alert(theCall(Leonir,Gabriel,João));
 
 
  
