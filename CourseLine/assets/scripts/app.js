@@ -14,20 +14,35 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
     outputResult (currentResult, calcDescription); //from vendor file
 }
 
+function writeToLog (
+   operationIdentifier,
+   prevResult,
+   operationNumber,
+   newResult
+) {const logEntry = {
+      operation: operationIdentifier,
+      prevResult: prevResult,
+      number: operationNumber,   
+      result: newResult,
+   }
+       logEntries.push (logEntry);
+       console.log(logEntries);
+}
+
 function addNumbers(){
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
     currentResult += enteredNumber /*+= é igual a currentResult = currentResult + enteredNumber*/ /*toda variavel "puxada" do HTML  terá o valor de string, é necessário converte-la*/;
     createAndWriteOutput('+', initialResult, enteredNumber);
-    logEntries.push(enteredNumber);
-    console.log(logEntries);
- }
+    writeToLog ('ADD',initialResult,enteredNumber,currentResult);
+}
 
  function subtract() {
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult
     currentResult -= enteredNumber /*toda variavel "puxada" do HTML  terá o valor de string, é necessário converte-la*/;
     createAndWriteOutput ('-', initialResult, enteredNumber);
+    writeToLog ('SUBTRACT',initialResult,enteredNumber,currentResult);
  }
  
  function multiply () {
@@ -35,12 +50,14 @@ function addNumbers(){
     const initialResult = currentResult
     currentResult *=  enteredNumber /*toda variavel "puxada" do HTML  terá o valor de string, é necessário converte-la*/;
     createAndWriteOutput ('*', initialResult, enteredNumber);
+    writeToLog ('MULTIPLY',initialResult,enteredNumber,currentResult);
  }
  function divide() {
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult
     currentResult /=  enteredNumber /*toda variavel "puxada" do HTML  terá o valor de string, é necessário converte-la*/;
     createAndWriteOutput ('/', initialResult, enteredNumber);
+    writeToLog ('DIVIDE',initialResult,enteredNumber,currentResult);
  }
  
 addBtn.addEventListener('click', addNumbers);
